@@ -1,0 +1,279 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+     <style>
+     
+        /* 탭 스타일 */
+        .tabs {
+            display: flex;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #ced4da;
+		   border-radius: 0.375rem;  
+       }
+
+        /* 내용 스타일 */
+        .tab-content {
+            display: none;
+        }
+
+        /* 섹션 스타일 */
+        .section {
+            margin-top: 20px;
+        }
+
+        /* 검색 버튼 스타일 */
+        #searchButton {
+            width: 25%;
+            margin-top: 10px;
+        }
+
+        /* 노란색 배경 스타일 */
+        .highlight-yellow {
+           border: 1px solid #ced4da;
+		   border-radius: 0.375rem;
+		   background-color: #f5f5f9;
+        }
+
+        /* 파랑색 배경 스타일 */
+        .highlight-blue {
+           border: 1px solid #ced4da;
+		   border-radius: 0.375rem;
+		   background-color: #f5f5f9;
+        }
+        
+        .btn-search {
+		    content: "";
+		    position: absolute;
+		    background: url(../resources/images/ico/ico_search_01.svg) 0/auto no-repeat;
+		    background-size: 18px;
+		    background-repeat: no-repeat;
+		    right: 12px;
+		    top: 50%;
+		    -webkit-transform: translateY(-50%);
+		    -ms-transform: translateY(-50%);
+		    transform: translateY(-50%);
+		    width: 20px;
+		    height: 20px;
+		    display: inline-block;
+		    overflow: hidden;
+		    border : 0;
+		}
+		
+		.search-card {
+			border-style : none;
+			margin-top: 20px;
+		}
+		
+		.list-unstyled input[type=radio]{
+		    display: none;
+		}
+		.list-unstyled input[type=radio]+label{
+		    display: inline-block;
+		    cursor: pointer;
+		    height: 24px;
+		    width: 70px;
+		    border: 1px solid #ced4da;
+		    border-radius: 0.375rem;
+		    line-height: 24px;
+		    text-align: center;
+		    font-weight:bold;
+		    font-size:13px;
+		}
+		.list-unstyled input[type=radio]+label{
+		    background-color: #fff;
+		    color: #333;
+		}
+		.list-unstyled input[type=radio]:checked+label{
+		    background-color: #C0C0C0;
+		    color: #fff;
+		}
+		
+		button.c-btn.is-outline-blue-1 {
+		    border:1px solid #2f7ad3;
+		    border-radius: 0.375rem;
+		    background-color: transparent;
+		    color: #2f7ad3;
+		    width: 80px;
+		    height : 40px;
+		    font-family : "NotoSansKR-Thin";
+		}
+    </style>
+    			<input type="hidden" id="hiddenCate" value="">
+				<input type="hidden" id="hiddenDyeYn" value="">
+				<input type="hidden" id="hiddenGetFrom" value="">
+				<input type="hidden" id="hiddenItemSize" value="">
+				
+ 			<!-- Side widgets-->
+                <div class="col-lg-3">				
+					<div class="tabs">
+					    <div class="tab" onclick="openTab('tab1', this)">설치물</div>
+					    <div class="tab" onclick="openTab('tab2', this)">하우징</div>
+					</div>
+					
+					<div id="tab1" class="tab-content">
+						   <!-- Search widget-->
+	                   <div class="card mb-4 search-card">
+	                        <!-- <div class="card-header">검색</div>
+	                        <div class="card-body"> -->
+	                            <div class="input-group">
+	                                <input class="form-control" id="keyword" type="text" placeholder="아이템 이름 검색.." value=""  onkeydown="if(event.keyCode==13) javascript:setItemList(1);"  />
+	                                <!-- <button class="btn btn-primary" id="button-search" type="button" onclick="setItemList(1)">검색</button> -->
+	                                
+	                                <button type="button" class="btn-search" id="customerSearchModal" onclick="setItemList(1)"></button>
+	                            </div>
+	                        <!-- </div> -->
+	                    </div>
+	                    <!-- Categories widget-->
+	                    <div class="card mb-4">
+	                        <div class="card-header">카테고리</div>
+	                        <div class="card-body">
+	                            <div class="row">
+	                                <div class="col-sm-6">
+	                                    <ul class="list-unstyled mb-0">
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('', this)" >전체 </a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('B', this)" >건축물</a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('P', this)" >식물 (나무,꽃)</a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('T', this)">타일 (울타리)</a></li>
+	                                    </ul>
+	                                </div>
+	                                <div class="col-sm-6">
+	                                    <ul class="list-unstyled mb-0">
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('A', this)" >공중</a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('W', this)" >벽</a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('E', this)" >기타분류</a></li>
+	                                        
+	                                    </ul>
+	                                </div>
+	                                <hr>
+	                                <div class="col-sm-6">
+	                                    <ul class="list-unstyled mb-0">
+	                                        <li>
+ 												염색 가능 여부
+  											</li>
+	                                         <li>
+ 												획득처 
+  											</li>
+	                                         <li>
+ 												사이즈 
+  											</li>
+	                                    </ul>
+	                                </div>
+	                                <div class="col-sm-6">
+	                                	<ul class="list-unstyled mb-0">
+	                                		<li><input type='radio' id="selectdyeYN" name='dyeYN' value='Y' /><label for="selectdyeYN">가능</label>
+  												<input type='radio' id="selectdyeYN2" name='dyeYN' value='N' /><label for="selectdyeYN2">불가능</label>
+  											</li>
+  											<li><input type='radio' id="selectGetFrom" name='getFrom' value='K' /><label for="selectGetFrom">키트</label>
+  												<input type='radio' id="selectGetFrom2" name='getFrom' value='E' /><label for="selectGetFrom2">이벤트</label>
+  											</li>
+  											<li><input type='radio' id="selectItemSize"  name='itemSize' value='1' /><label for="selectItemSize">1x1</label>
+  												<br><input type='radio' id="selectItemSize2" name='itemSize' value='2' /><label for="selectItemSize2">2x2~10x10</label>
+  												<br><input type='radio' id="selectItemSize3" name='itemSize' value='3' /><label for="selectItemSize3">11x11~</label>
+  											</li>
+	                                	</ul>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <button class="c-btn is-outline-blue-1" type="button" onclick="init()">초기화</button> 
+					</div>
+
+					<div id="tab2" class="tab-content">
+					    <!-- 탭2 내용 -->
+					    <!-- 여기에 하우징 탭의 내용 추가 -->
+					</div>
+                
+ 
+                    <!-- Search widget-->
+                    <!-- <div class="card mb-4">
+                        <div class="card-header">검색</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Search.." aria-label="Enter search term..." aria-describedby="button-search" />
+                                <button class="btn btn-primary" id="button-search" type="button">검색</button>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Categories widget-->
+                    <!-- <div class="card mb-4">
+                        <div class="card-header">카테고리</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="#!">건축물</a></li>
+                                        <li><a href="#!">식물(나무,꽃)</a></li>
+                                        <li><a href="#!">타일(울타리)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="#!">공중</a></li>
+                                        <li><a href="#!">벽</a></li>
+                                        <li><a href="#!">기타분류</a></li>
+                                        <li><a href="#!">기타분류</a></li>
+                                    </ul>
+                                </div>
+                                <p>---------------------------------</p>
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="#!">하우징</a></li>
+                                    </ul>
+                                </div>
+                                <p>---------------------------------</p>
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="#!">염색 여부</a></li>
+                                        <li><a href="#!">획득처</a></li>
+                                        <li><a href="#!">사이즈 1x1 2x2~</a></li>
+										<li>
+										    <input type="radio" name="fruit" value="사과" /> 사과
+											<input type="radio" name="fruit" value="바나나" checked="checked" /> 바나나
+										</li>
+										<li> <a class="btn btn-primary" href="#!">검색 →</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                
+                
+                
+     <script>
+	     function openTab(tabName, clickedTab) {
+	         var i, tabContent, tabs;
+	         tabContent = document.getElementsByClassName("tab-content");
+	         tabs = document.getElementsByClassName("tab");
+	
+	         // 모든 탭 및 탭 컨텐츠의 클래스 제거
+	         for (i = 0; i < tabContent.length; i++) {
+	             tabContent[i].style.display = "none";
+	             tabs[i].classList.remove("highlight-yellow", "highlight-blue");
+	         }
+	
+	         // 선택한 탭과 탭 컨텐츠에 클래스 추가
+	         document.getElementById(tabName).style.display = "block";
+	
+	         // 선택한 탭에 따라 배경색 변경
+	         if (tabName === 'tab1') {
+	        	
+	             clickedTab.classList.add("highlight-yellow");
+	         } else if (tabName === 'tab2') {
+	        	 location.href="${path}/housing/list";
+	             clickedTab.classList.add("highlight-blue");
+	         }
+	     }
+	     
+	     function init() {
+	    	 window.location.reload();	    	 	 
+	     }
+	
+	     // 초기에 첫 번째 탭이 열리도록 설정
+	     openTab("tab1", document.querySelector('.tab'));
+     </script>           
