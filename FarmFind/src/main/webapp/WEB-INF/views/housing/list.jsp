@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+
 <%@ include file="../inc/header.jsp"%>
 
 <style>
@@ -77,7 +78,8 @@
 #row {
   position: relative; /* 위치 지정을 위해 상대 위치 설정 */
   min-height: 340px;
-    margin-left:10px;
+  width: 100%;
+  margin-left:10px;
 }
 
 /* 가운데 정렬을 위한 스타일링 */
@@ -100,12 +102,9 @@
 /*아이템 이미지*/
 .itemcard {
 	overflow : hidden;
+	margin: auto;
 }
-.img_span {
-	width : 300px;
-	height: 200px;
-	overflow : hidden;
-}
+
 .itemcard img {
   transition: all 0.2s linear;
 }
@@ -113,6 +112,25 @@
   transform: scale(1.05);
 }
 
+/* 하우징 css 추가 */
+
+.mb-6 {
+	width: 48%;
+	margin-bottom : 3em !important;
+	margin: auto;
+	height: 350px;
+}
+
+.card-img-top {
+	width: 100%;
+	height: 250px;
+}
+.img_span {
+	overflow : hidden;
+}
+.item-card-body {
+	width : auto;
+}
 </style>
 
 <!-- Page content-->
@@ -129,17 +147,24 @@
 			</div>
 			
 			<div class="row" id="row">
-				
-				<!-- 
-                            <div class="card itemcard mb-4">
-                                <a href="#!"><img class="card-img-top" src="${path }/resources/assets/img/item/깊은 바다의 침대.PNG" alt="..." />
-                                <div class="card-body">
-                                    <div class="small text-muted">2023-12</div> 
-                                    <h2 class="card-title h6">낭만 농장 깊은 바다의 침대</h2>
-                                </div>
-                                </a>
-                            </div>-->
+				<!-- <div class="card mb-12">
+                    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                    <div class="card-body">
+                        <div class="small text-muted">January 1, 2023</div>
+                        <h2 class="card-title">Featured Post Title</h2>
+                    </div>
+                </div>-->   
+                							
 
+			               <%--  <div class='card itemcard mb-6'>
+											<a href='${path}/item/detail?no="+housinginfo[i].item_no+"'><div class='img_span''><img class='card-img-top' src='https://dummyimage.com/850x350/dee2e6/6c757d.jpg' alt='이미지'/></div>
+											<div class='item-card-body'>
+											<div class='small text-muted'>2023-12</div>
+											<h2 class='card-title h6'>낭만 농장 두근두근 아일랜드 하우징 세트 A타입</h2>
+											</div>
+											</a>
+							</div>
+										 --%>          
 			</div>
 			<div class="row">
 				<!-- Pagination-->
@@ -191,7 +216,7 @@
 	let apiurl = "http://localhost:8090/";
 
 	$(document).ready(function() {
-		setItemList(1); //아이템 리스트 세팅 
+		setHousingList(1); //아이템 리스트 세팅 
 
 	});
 	
@@ -202,23 +227,7 @@
 		
 		setItemList(1);			
 	});
-	
-	//획득처 
-	$("input[name='getFrom']").change(function(){
-		let getFrom = $("input[name='getFrom']:checked").val();
-		$("#hiddenGetFrom").val(getFrom);
-		
-		setItemList(1);				
-	});
-	
-	//사이즈
-	$("input[name='itemSize']").change(function(){
-		let itemSize = $("input[name='itemSize']:checked").val();
-		$("#hiddenItemSize").val(itemSize);
-		
-		setItemList(1);				
-	});
-	
+
 	//카테고리 값 설정
 	function setCateValue(category, link) { 
 		$("#hiddenCate").val(category);
@@ -233,7 +242,7 @@
 		setItemList(1); //데이터 검색
 	}
 
-	function setItemList(num) { // 페이징처리
+	function setHousingList(num) { // 페이징처리
 
 		let keyword = $("#keyword").val(); //검색어
 		let category = $("#hiddenCate").val(); //중간카테고리
@@ -242,15 +251,11 @@
 		let itemSize = $("#hiddenItemSize").val(); //사이즈
 		
 			$.ajax({
-					url : apiurl + 'item/list',
+					url : apiurl + 'housing/list',
 					type : 'GET',
 					data : {
 						page : num,
-						keyword : keyword,
-						category : category,
-						dyeYN : dyeYN,
-						getFrom : getFrom,
-						itemSize : itemSize
+						keyword : keyword
 					},
 					contentType : "application/json; charset=utf-8;",
 					dataType : 'json',
@@ -258,37 +263,41 @@
 						// 성공 시 실행할 코드
 						console.log('AJAX 요청 성공:');
 
-						let iteminfo = data.list; //아이템정보값
+						let housinginfo = data.list; //아이템정보값
 						let paging = data.pagination;
 						let html = "";
 						
-						if(iteminfo.length > 0) {
+						if(housinginfo.length > 0) {
 														
-							for (i = 0; i < iteminfo.length; i++) {
+							for (i = 0; i < housinginfo.length; i++) {
 	
-								html += "<div class='card itemcard mb-5'>";
-								html += "<a href='${path}/item/detail?no="+iteminfo[i].item_no+"'><div class='img_span''><img class='card-img-top' src='' alt='이미지'/></div>";
-								//html += "<a href='#!'><img class='card-img-top' src="+iteminfo[i].item_img_aft+" alt='...' />";
+								html += "<div class='card itemcard mb-6'>";
+								html += "<a href='${path}/housing/detail?no="+housinginfo[i].housing_no+"'>";
+								html += "<div class='img_span''><img class='card-img-top' src='"+housinginfo[i].housing_img_aft+"' alt='이미지'/></div>";
 								html += "<div class='item-card-body'>";
-								html += "<div class='small text-muted'>"+iteminfo[i].item_get_from_dt+"2</div>";
-								html += "<h2 class='card-title h6'>" + iteminfo[i].item_nm + "</h2>";
+								html += "<div class='small text-muted'>"+housinginfo[i].housing_get_from_dt+"2</div>";
+								html += "<h2 class='card-title h6'>" + housinginfo[i].housing_nm + "</h2>";
 								html += "</div></a></div>";
 	
 							}
-												
-							if (iteminfo.length < 9) { //한페이지의 아이템 출력개수가 9개보다 적을 때 
+							
+							if(housinginfo.length == 9) {
+								html += "<div class='card itemcard mb-6' style='height:280px; border-style:none; '></div>";															
+							}
+		
+							/*if (housinginfo.length < 9) { //한페이지의 아이템 출력개수가 9개보다 적을 때 
 								
 								let s = "";
-								if(iteminfo.length == 1 || iteminfo.length == 4 || iteminfo.length == 7) {
+								if(housinginfo.length == 1 || housinginfo.length == 4 || housinginfo.length == 7) {
 									s=2;
-								} else if (iteminfo.length == 2 || iteminfo.length == 5 || iteminfo.length == 8) {
+								} else if (housinginfo.length == 2 || housinginfo.length == 5 || housinginfo.length == 9) {
 									s=1;
 								}
 								
-								for(i=1; i<= s; i++) {
-									html += "<div class='card itemcard mb-5' style='height:280px; border-style:none; '></div>";
+								for(i=1; i<= i; i++) {
+									html += "<div class='card itemcard mb-6' style='height:280px; border-style:none; '></div>";
 									}						
-							} 
+							} */
 	
 							$("#row").empty();
 							$("#row").append(html);
@@ -315,10 +324,10 @@
 							
 							if (existPrevPage) {
 								
-								pagingHtml += "<li><a class='page-link' onclick='setItemList(1)' aria-label='처음'>";
+								pagingHtml += "<li><a class='page-link' onclick='setHousingList(1)' aria-label='처음'>";
 								pagingHtml += "<span class='is-blind p-first'>처음</span></a>";
 								pagingHtml += "</li>";
-								pagingHtml += "<li><a class='page-link' onclick='setItemList("+ (startPage - 1) + ")' aria-label='이전'>";
+								pagingHtml += "<li><a class='page-link' onclick='setHousingList("+ (startPage - 1) + ")' aria-label='이전'>";
 								
 							} else {
 	
@@ -337,16 +346,16 @@
 								if (num == i) {
 									pagingHtml += "<li><a class='page-link is-active'>"+ i + "</a></li>";
 								} else {
-									pagingHtml += "<li><a class='page-link' onclick='setItemList(" + i + ")'>" + i + "</a>&nbsp;</li>";
+									pagingHtml += "<li><a class='page-link' onclick='setHousingList(" + i + ")'>" + i + "</a>&nbsp;</li>";
 								}
 	
 							}
 	
 							if (existNextPage) {
-								pagingHtml += "<li><a class='page-link' onclick='setItemList(" + (endPage + 1)+")' aria-label='다음'>";
+								pagingHtml += "<li><a class='page-link' onclick='setHousingList(" + (endPage + 1)+")' aria-label='다음'>";
 								pagingHtml += "<span class='is-blind p-next'>다음</span></a>";
 								pagingHtml += "</li>";
-								pagingHtml += "<li><a class='page-link' onclick='setItemList(" + totalPageCount +")' aria-label='끝'>";
+								pagingHtml += "<li><a class='page-link' onclick='setHousingList(" + totalPageCount +")' aria-label='끝'>";
 	
 							} else {
 	
@@ -383,9 +392,5 @@
 	
 	}
 	
-	function getItemInfo() {
-		
-		
-	}
+	
 </script>
-
