@@ -33,8 +33,8 @@
     </head>
     <script>
     //api 주소 선언
-    let apiurl = "http://localhost:8090/";
-    //let apiurl = "http://3.38.231.87:8090/";	
+    //let apiurl = "http://localhost:8090/";
+    let apiurl = "http://3.38.231.87:8090/";	
    
    	  
     </script>
