@@ -172,7 +172,7 @@ textarea[readonly=readonly] {
 						설명
 					</div>				
 					<div class=" label-input">
-						<p>낭만 농장을 좋아하는 사나운 새끼 드래곤. 야생의 새끼 드래곤이었으나, 자신을 보살펴준 주인과 함께 에린에 남기를 원해 낭만 농장으로 돌아왔다. 예전보다 친해진 덕분에 야생일 때보다 훨씬 귀엽고 사랑스럽다. 조심스럽게 다가가보자.</p>
+						<p id="item_dscption"></p>
 					</div>
 					<div class="label-input">
 						<p id="regi">등록날짜: 2023년 12월 14일</p>
@@ -197,8 +197,6 @@ textarea[readonly=readonly] {
 <%@ include file="../inc/footer.jsp"%>
 
 <script>
-	let apiurl = "http://localhost:8090/";
-
 	 $(document).ready(function(){
 		 //아이템 번호세팅 
 		 let urlParams = new URL(location.href).searchParams;
@@ -226,9 +224,13 @@ textarea[readonly=readonly] {
 					$("#item_getFrom_nm").val(data.item_get_from_nm);
 					$("#item_getFrom_dt").val(data.item_get_from_dt);
 					
+					//상호작용
 					let item_etc = data.item_etc != null && data.item_etc != ''  ? data.item_etc : '정보 없음';
 					$("#item_etc").val(item_etc);
-					
+					//아이템 설명
+					let item_dscption = data.item_dscption != null && data.item_dscption != '' ? data.item_dscption : '정보 없음';
+					$("#item_dscption").text(item_dscption);
+
 					let img1 = document.getElementById("big");
 					let item_img_aft = data.item_img_aft != null && data.item_img_aft != '' ? data.item_img_aft : '${path}/resources/images/noimg.gif';
 					img1.src = item_img_aft;

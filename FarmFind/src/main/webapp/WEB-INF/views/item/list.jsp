@@ -7,6 +7,7 @@
 /*Pagination*/
 .c-tbl-paging {
 	margin-top: 12px;
+	margin-left: 20px;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -77,7 +78,7 @@
 #row {
   position: relative; /* 위치 지정을 위해 상대 위치 설정 */
   min-height: 340px;
-    margin-left:10px;
+  margin-left:10px;
 }
 
 /* 가운데 정렬을 위한 스타일링 */
@@ -89,9 +90,6 @@
   text-align: center; /* 가운데 정렬을 위해 텍스트 정렬 설정 */
 }
 
-.selected {
-	color : red;
-}
 
 .SearchResult p {
 	text-align: right;
@@ -113,6 +111,10 @@
   transform: scale(1.05);
 }
 
+.selected {
+	color : red;
+	font-weight: bold;
+}
 </style>
 
 <!-- Page content-->
@@ -124,10 +126,10 @@
 		<!-- Blog entries-->
 		<div class="col-lg-9">
 			<!-- 아이템 리스트 -->
-			<div class="SearchResult">
+			<!-- <div class="SearchResult">
 				<p><em id="SearchWord"></em>검색결과</p>					
 			</div>
-			
+			 -->
 			<div class="row" id="row">
 				
 				<!-- 
@@ -188,8 +190,8 @@
 </body>
 </html>
 <script>
-	let apiurl = "http://localhost:8090/";
 
+	
 	$(document).ready(function() {
 		setItemList(1); //아이템 리스트 세팅 
 
@@ -262,15 +264,25 @@
 						let paging = data.pagination;
 						let html = "";
 						
+						console.log(iteminfo);
+						
 						if(iteminfo.length > 0) {
 														
 							for (i = 0; i < iteminfo.length; i++) {
 	
 								html += "<div class='card itemcard mb-5'>";
+
 								html += "<a href='${path}/item/detail?no="+iteminfo[i].item_no+"'><div class='img_span''><img class='card-img-top' src='' alt='이미지'/></div>";
 								//html += "<a href='#!'><img class='card-img-top' src="+iteminfo[i].item_img_aft+" alt='...' />";
 								html += "<div class='item-card-body'>";
-								html += "<div class='small text-muted'>"+iteminfo[i].item_get_from_dt+"2</div>";
+								
+								if(iteminfo[i].item_get_from_dt != null && iteminfo[i].item_get_from_dt != '') {
+									
+									html += "<div class='small text-muted'>"+iteminfo[i].item_get_from_dt+"</div>";	
+								} else {
+									html += "<div class='small text-muted'>정보 없음</div>";
+								}
+								
 								html += "<h2 class='card-title h6'>" + iteminfo[i].item_nm + "</h2>";
 								html += "</div></a></div>";
 	
@@ -382,10 +394,6 @@
 				});
 	
 	}
-	
-	function getItemInfo() {
-		
-		
-	}
+
 </script>
 

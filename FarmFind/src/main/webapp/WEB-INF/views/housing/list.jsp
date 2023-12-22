@@ -8,6 +8,7 @@
 /*Pagination*/
 .c-tbl-paging {
 	margin-top: 12px;
+	margin-left: 20px;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -118,19 +119,38 @@
 	width: 48%;
 	margin-bottom : 3em !important;
 	margin: auto;
-	height: 350px;
+	height: 360px;
 }
 
+
 .card-img-top {
-	width: 100%;
-	height: 250px;
+    width: 100%;
+    height: 100%;
 }
+
 .img_span {
 	overflow : hidden;
+	height: 280px;
 }
 .item-card-body {
 	width : auto;
 }
+
+.text_under {
+         position: relative;    
+}
+.text_under::after {
+        content: ""; 
+        width: 100%; 
+        height: 10px; 
+        background: #99fee7; 
+        position: absolute; 
+        display: inline-block; 
+        left: 0;          
+ 		bottom: 1px;  
+        z-index: -1; 
+}
+
 </style>
 
 <!-- Page content-->
@@ -142,9 +162,9 @@
 		<!-- Blog entries-->
 		<div class="col-lg-9">
 			<!-- 아이템 리스트 -->
-			<div class="SearchResult">
-				<p><em id="SearchWord"></em>검색결과</p>					
-			</div>
+			<!-- <div class="SearchResult">
+				<p><em id="SearchWord" class="text_under"></em>검색결과</p>				
+			</div> -->
 			
 			<div class="row" id="row">
 				<!-- <div class="card mb-12">
@@ -213,7 +233,6 @@
 </body>
 </html>
 <script>
-	let apiurl = "http://localhost:8090/";
 
 	$(document).ready(function() {
 		setHousingList(1); //아이템 리스트 세팅 
@@ -221,15 +240,23 @@
 	});
 	
 	//염색여부
-	$("input[name='dyeYN']").change(function(){
-		let dyeYN = $("input[name='dyeYN']:checked").val();
-		$("#hiddenDyeYn").val(dyeYN);
+	$("input[name='tab2_dyeYN']").change(function(){
+		let dyeYN = $("input[name='tab2_dyeYN']:checked").val();
+		$("#tab2_hiddenDyeYn").val(dyeYN);
 		
-		setItemList(1);			
+		setHousingList(1);			
+	});
+	
+	//획득처 
+	$("input[name='tab2_getFrom']").change(function(){
+		let getFrom = $("input[name='tab2_getFrom']:checked").val();
+		$("#tab2_hiddenGetFrom").val(getFrom);
+		
+		setHousingList(1);				
 	});
 
 	//카테고리 값 설정
-	function setCateValue(category, link) { 
+	/*function setCateValue(category, link) { 
 		$("#hiddenCate").val(category);
 		// 현재 선택된 모든 링크에서 'selected' 클래스 제거
         var links = document.getElementsByTagName('a');
@@ -240,22 +267,24 @@
         // 클릭한 링크에 'selected' 클래스 추가
         link.classList.add('selected');				
 		setItemList(1); //데이터 검색
-	}
+	}*/
 
 	function setHousingList(num) { // 페이징처리
 
-		let keyword = $("#keyword").val(); //검색어
-		let category = $("#hiddenCate").val(); //중간카테고리
-		let dyeYN = $("#hiddenDyeYn").val(); //염색여부
-		let getFrom = $("#hiddenGetFrom").val(); //획득처
-		let itemSize = $("#hiddenItemSize").val(); //사이즈
-		
+		let keyword = $("#tab2_keyword").val(); //검색어
+		let category = $("#tab2_hiddenCate").val(); //중간카테고리
+		let dyeYN = $("#tab2_hiddenDyeYn").val(); //염색여부
+		let getFrom = $("#tab2_hiddenGetFrom").val(); //획득처
+		let itemSize = $("#tab2_hiddenItemSize").val(); //사이즈
+
 			$.ajax({
 					url : apiurl + 'housing/list',
 					type : 'GET',
 					data : {
 						page : num,
-						keyword : keyword
+						keyword : keyword,
+						dyeYN : dyeYN,
+						getFrom : getFrom
 					},
 					contentType : "application/json; charset=utf-8;",
 					dataType : 'json',
@@ -264,6 +293,8 @@
 						console.log('AJAX 요청 성공:');
 
 						let housinginfo = data.list; //아이템정보값
+						
+						console.log(housinginfo);
 						let paging = data.pagination;
 						let html = "";
 						
@@ -275,13 +306,13 @@
 								html += "<a href='${path}/housing/detail?no="+housinginfo[i].housing_no+"'>";
 								html += "<div class='img_span''><img class='card-img-top' src='"+housinginfo[i].housing_img_aft+"' alt='이미지'/></div>";
 								html += "<div class='item-card-body'>";
-								html += "<div class='small text-muted'>"+housinginfo[i].housing_get_from_dt+"2</div>";
+								html += "<div class='small text-muted'>"+housinginfo[i].housing_get_from_dt+"</div>";
 								html += "<h2 class='card-title h6'>" + housinginfo[i].housing_nm + "</h2>";
 								html += "</div></a></div>";
 	
 							}
 							
-							if(housinginfo.length == 9) {
+							if(housinginfo.length  % 2 != 0 ) {
 								html += "<div class='card itemcard mb-6' style='height:280px; border-style:none; '></div>";															
 							}
 		

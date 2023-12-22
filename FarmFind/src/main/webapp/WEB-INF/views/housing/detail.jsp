@@ -101,7 +101,7 @@ textarea[readonly=readonly] {
 .line {
 	display:flex;
 	flex-basis:100%;
-	align-housings:center;
+	align-items:center;
 	color:black;
 	font-size:16px;
 	margin:8px 0px;
@@ -119,6 +119,7 @@ textarea[readonly=readonly] {
 
 .back {
 	text-align : right;
+	margin-top: 10px;
 }
 
 </style>
@@ -146,6 +147,10 @@ textarea[readonly=readonly] {
 						<label for="housing_nm">염색 가능 여부 </label> <input type="text"
 							class="c-input" id="housing_dye_yn" name="" value="" readonly="readonly">
 					</div>
+					<div class=" label-input">
+						<label for="housing_nm">염색 가능 파트 </label> <input type="text"
+							class="c-input" id="housing_dye_part" name="" value="" readonly="readonly">
+					</div>
 					<div class="label-input line">
 						획득처
 					</div>
@@ -172,7 +177,7 @@ textarea[readonly=readonly] {
 						설명
 					</div>				
 					<div class=" label-input">
-						<p>낭만 농장을 좋아하는 사나운 새끼 드래곤. 야생의 새끼 드래곤이었으나, 자신을 보살펴준 주인과 함께 에린에 남기를 원해 낭만 농장으로 돌아왔다. 예전보다 친해진 덕분에 야생일 때보다 훨씬 귀엽고 사랑스럽다. 조심스럽게 다가가보자.</p>
+						<p id="housing_dscption"></p>
 					</div>
 					<div class="label-input">
 						<p id="regi">등록날짜: 2023년 12월 14일</p>
@@ -183,8 +188,7 @@ textarea[readonly=readonly] {
 						<img id="big" src="">					 				
 					</div>
 					<div class="sub_img">
-						<img id="small" src="https://storage.cloud.google.com/farmfind/%EC%95%BC%EC%99%B8%EB%AC%B4%EB%8C%80.jpg" onclick="imgToggle()">
-						<!-- <img id="small" src="https://storage.cloud.google.com/farmfind/%EC%95%BC%EC%99%B8%EB%AC%B4%EB%8C%80.jpg" onclick="imgToggle()">-->						 									
+						<img id="small" src="">
 					</div>
 						
 					</div>
@@ -197,7 +201,6 @@ textarea[readonly=readonly] {
 <%@ include file="../inc/footer.jsp"%>
 
 <script>
-	let apiurl = "http://localhost:8090/";
 
 	 $(document).ready(function(){
 		 //아이템 번호세팅 
@@ -215,11 +218,13 @@ textarea[readonly=readonly] {
 				},
 				success : function(data) {
 					console.log("ajax 통신 성공");
-					$("#housing_nm").append(data._nm);
+					$("#housing_nm").append(data.housing_nm);
 					$("#housing_size").val(data.housing_size);
 					
 					let housing_dye_yn = data.housing_dye_yn == 'Y' ? '가능' : '불가능';
 					$("#housing_dye_yn").val(housing_dye_yn);
+					
+					$("#housing_dye_part").val(data.housing_dye_part);
 					
 					let housing_from_cd = data.housing_get_from_cd == 'K' ? '키트' : '이벤트';
 					$("#housing_getFrom_cd").val(housing_from_cd);
@@ -228,6 +233,10 @@ textarea[readonly=readonly] {
 					
 					let housing_etc = data.housing_etc != null && data.housing_etc != ''  ? data.housing_etc : '정보 없음';
 					$("#housing_etc").val(housing_etc);
+					
+					//아이템 설명
+					let housing_dscption = data.housing_dscption != null && data.housing_dscption != '' ? data.housing_dscption : '정보 없음';
+					$("#housing_dscption").append(housing_dscption);
 					
 					let img1 = document.getElementById("big");
 					let housing_img_aft = data.housing_img_aft != null && data.housing_img_aft != '' ? data.housing_img_aft : '${path}/resources/images/noimg.gif';
