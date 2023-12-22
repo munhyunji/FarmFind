@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- 세션12 -->
+<%  session.setMaxInactiveInterval(43200); %>
 
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
@@ -30,19 +31,42 @@
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <!-- <script type="text/Javascript" src="${path}/resources/js/scripts.js"></script>-->
     </head>
+    <script>
+    //api 주소 선언
+    let apiurl = "http://localhost:8090/";
+    //let apiurl = "http://3.38.231.87:8090/";	
+   
+   	  
+    </script>
+    <style>
+    	.nav-logo {
+			  width: 40%; /* 이미지 크기 조절=헤더이미지 */
+		}
+						
+		.show-nav{
+			display : block;
+			transition: top 0.2s ease-in-out;
+		}
+		
+		.hide-nav{
+			display : none;
+			transition: top 0.2s ease-in-out;
+		}
+    </style>
+ 
     <body id="page-top">
         <!-- Navigation-->
          <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="${path }/resources/assets/img/navbar-logo.svg" alt="..." /></a>
+                <a class="navbar-brand" href="${path }"><img class="nav-logo" src="${path }/resources/assets/img/navbar-logo.svg" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="${path }">home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${path }/item/list">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${path }">메인 화면</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${path }/item/list">낭만 농장</a></li>
                         <%-- <li class="nav-item"><a class="nav-link" href="${path}#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="${path}/chat">Chat AI</a></li>
                         <li class="nav-item"><a class="nav-link" href="${path}/SalesAlaram">Contact</a></li> --%>
@@ -59,4 +83,4 @@
                     <p class="lead mb-0">낭농 하우스 </p>
                 </div>
             </div>
-        </header>
+        </header>        
