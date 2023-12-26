@@ -52,13 +52,23 @@
 			display : none;
 			transition: top 0.2s ease-in-out;
 		}
+		
+		.fixed-top {
+		    position: fixed;
+		    top: 0;
+		    right: 0;
+		    left: 0;
+		    z-index: 1030;
+		    background-color: rgba(255, 255, 255, .4);
+  			backdrop-filter: blur(4px);
+		}
     </style>
  
     <body id="page-top">
         <!-- Navigation-->
          <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="${path }"><img class="nav-logo" src="${path }/resources/assets/img/navbar-logo.svg" alt="..." /></a>
+                <a class="navbar-brand" href="#"><img class="nav-logo" src="${path }/resources/assets/img/navbar-logo.svg" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
