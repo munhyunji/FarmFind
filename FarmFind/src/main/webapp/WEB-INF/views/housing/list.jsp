@@ -304,7 +304,14 @@
 	
 								html += "<div class='card itemcard mb-6'>";
 								html += "<a href='${path}/housing/detail?no="+housinginfo[i].housing_no+"'>";
-								html += "<div class='img_span''><img class='card-img-top' src='"+housinginfo[i].housing_img_aft+"' alt='이미지'/></div>";
+								
+
+								if(housinginfo[i].housing_img_aft != null && housinginfo[i].housing_img_aft != '') {
+									html += "<div class='img_span''><img class='card-img-top' src='"+housinginfo[i].housing_img_aft+"' alt='이미지'/></div>";
+								} else {
+									html += "<a href='${path}/item/detail?no="+iteminfo[i].item_no+"'><div class='img_span''><img class='card-img-top' src='${path}/resources/images/noimage.jpg' alt='이미지'/></div>";										
+								}
+								
 								html += "<div class='item-card-body'>";
 								html += "<div class='small text-muted'>"+housinginfo[i].housing_get_from_dt+"</div>";
 								html += "<h2 class='card-title h6'>" + housinginfo[i].housing_nm + "</h2>";

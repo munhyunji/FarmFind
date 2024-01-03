@@ -119,6 +119,7 @@ textarea[readonly=readonly] {
 
 .back {
 	text-align : right;
+	margin-top: 10px;
 }
 
 </style>
@@ -183,7 +184,7 @@ textarea[readonly=readonly] {
 						<img id="big" src="">					 				
 					</div>
 					<div class="sub_img">
-						<img id="small" src="https://storage.cloud.google.com/farmfind/%EC%95%BC%EC%99%B8%EB%AC%B4%EB%8C%80.jpg" onclick="imgToggle()">
+						<img id="small" src="https://storage.cloud.google.com/farmfind/%EC%95%BC%EC%99%B8%EB%AC%B4%EB%8C%80.jpg">
 						<!-- <img id="small" src="https://storage.cloud.google.com/farmfind/%EC%95%BC%EC%99%B8%EB%AC%B4%EB%8C%80.jpg" onclick="imgToggle()">-->						 									
 					</div>
 						
@@ -232,11 +233,11 @@ textarea[readonly=readonly] {
 					$("#item_dscption").text(item_dscption);
 
 					let img1 = document.getElementById("big");
-					let item_img_aft = data.item_img_aft != null && data.item_img_aft != '' ? data.item_img_aft : '${path}/resources/images/noimg.gif';
+					let item_img_aft = data.item_img_aft != null && data.item_img_aft != '' ? data.item_img_aft : '${path}/resources/images/noimage.jpg';
 					img1.src = item_img_aft;
 					
 					let img2 = document.getElementById("small");
-					let item_img_nig = data.item_img_nig != null && data.item_img_nig != '' ? data.item_img_nig : '${path}/resources/images/noimg.gif';
+					let item_img_nig = data.item_img_nig != null && data.item_img_nig != '' ? data.item_img_nig : '${path}/resources/images/noimage.jpg';
 					img2.src = item_img_nig;
 					
 				},
@@ -255,7 +256,7 @@ textarea[readonly=readonly] {
 		 
 	 })
 	  var cnt = 1; // 전역 변수.
-	  function imgToggle() {
+	  /* function imgToggle() {
 	    var img1 = document.getElementById("big");
 	    var img2 = document.getElementById("small");
 	 
@@ -268,7 +269,8 @@ textarea[readonly=readonly] {
 	    }
 	    cnt++; // cnt 변수 1씩 증가 시키기
 	  }
-	  
+	   */
+	
 	
 </script>
 

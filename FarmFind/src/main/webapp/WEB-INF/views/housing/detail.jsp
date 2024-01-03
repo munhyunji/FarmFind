@@ -239,11 +239,11 @@ textarea[readonly=readonly] {
 					$("#housing_dscption").append(housing_dscption);
 					
 					let img1 = document.getElementById("big");
-					let housing_img_aft = data.housing_img_aft != null && data.housing_img_aft != '' ? data.housing_img_aft : '${path}/resources/images/noimg.gif';
+					let housing_img_aft = data.housing_img_aft != null && data.housing_img_aft != '' ? data.housing_img_aft : '${path}/resources/images/noimage.jpg';
 					img1.src = housing_img_aft;
 					
 					let img2 = document.getElementById("small");
-					let housing_img_nig = data.housing_img_nig != null && data.housing_img_nig != '' ? data.housing_img_nig : '${path}/resources/images/noimg.gif';
+					let housing_img_nig = data.housing_img_nig != null && data.housing_img_nig != '' ? data.housing_img_nig : '${path}/resources/images/noimage.jpg';
 					img2.src = housing_img_nig;
 					
 				},

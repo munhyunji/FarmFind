@@ -194,7 +194,6 @@
 	
 	$(document).ready(function() {
 		setItemList(1); //아이템 리스트 세팅 
-
 	});
 	
 	//염색여부
@@ -263,7 +262,7 @@
 						let iteminfo = data.list; //아이템정보값
 						let paging = data.pagination;
 						let html = "";
-						
+						let imgUrl = '${path}/resources/images/noimage.jpg';
 						console.log(iteminfo);
 						
 						if(iteminfo.length > 0) {
@@ -271,8 +270,13 @@
 							for (i = 0; i < iteminfo.length; i++) {
 	
 								html += "<div class='card itemcard mb-5'>";
-
-								html += "<a href='${path}/item/detail?no="+iteminfo[i].item_no+"'><div class='img_span''><img class='card-img-top' src='' alt='이미지'/></div>";
+								
+								if(iteminfo[i].item_get_from_dt != null && iteminfo[i].item_get_from_dt != '') {
+									html += "<a href='${path}/item/detail?no="+iteminfo[i].item_no+"'><div class='img_span'><img class='card-img-top' src="+iteminfo[i].item_img_aft+" /></div>";
+								} else {
+									html += "<a href='${path}/item/detail?no="+iteminfo[i].item_no+"'><div class='img_span'><img class='card-img-top' src='"+imgUrl+"' /></div>";										
+									
+								}
 								//html += "<a href='#!'><img class='card-img-top' src="+iteminfo[i].item_img_aft+" alt='...' />";
 								html += "<div class='item-card-body'>";
 								
