@@ -26,8 +26,8 @@
     <link href="${path}/resources/css/sb-admin-2.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="${path}/resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-    
-
+   
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
 </head>
 	<script>
 	 //api 주소 선언

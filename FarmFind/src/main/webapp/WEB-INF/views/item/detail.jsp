@@ -119,7 +119,106 @@ textarea[readonly=readonly] {
 
 .back {
 	text-align : right;
-	margin-top: 10px;
+}
+
+.back-space {
+	display:flex;
+	flex-basis:100%;
+	align-items:center;
+	color:black;
+	font-size:16px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	flex-direction: row-reverse;
+}
+
+ .main_img {
+    margin-top: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  /* 아이콘 설정 */
+  
+
+  .fa-circle {
+    width: 50px; /* 원형의 너비 */
+    height: 50px; /* 원형의 높이 */
+    border-radius: 50%; /* 원형 모양 */
+    background-color: #fff; /* 배경 색상 (원하는 색상으로 변경) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 속성 설정 */
+    color: #ffffff;
+	margin-top: 15px;
+  }
+  
+  .fa-moon {
+    margin: 10px 0 0 12px;
+  }
+  
+/* 툴팁부분*/
+/* FLOW: DOWN */
+.has-tooltip:hover + .tooltip[flow^="down"],
+.has-tooltip:focus + .tooltip[flow^="down"],
+.has-tooltip.hover + .tooltip[flow^="down"] {
+  opacity: 1;
+  pointer-events: inherit;
+  animation: tooltips-vert 300ms ease-out forwards;
+}
+
+.tooltip[flow^="down"] {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0) scale(0.75) rotate(5deg);
+  transform-origin: top center;
+  padding: 10px 30px;
+  border-radius: 0.375em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+  text-align: center;
+  color: white;
+  transition: 0.15s ease-in-out;
+  opacity: 0;
+  width: 70%;
+  height: 50%;
+  max-width: 100vw;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.tooltip[flow^="down"].red:after {
+  border-bottom: 5px solid rgba($red, 0.75);
+}
+
+.has-tooltip:hover + .tooltip[flow^="down"] img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* 툴팁 꼬리 */
+.tooltip[flow^="down"]:after {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-bottom: 5px solid white;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+/* KEYFRAMES */
+@keyframes tooltips-vert {
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 </style>
@@ -133,6 +232,7 @@ textarea[readonly=readonly] {
 			<div class="detail_row">
 				
 				<div class="info_box">
+					
 					<div class="label-input title">
 						<h4 id="item_nm"></h4>
 					</div>
@@ -178,19 +278,25 @@ textarea[readonly=readonly] {
 					<div class="label-input">
 						<p id="regi">등록날짜: 2023년 12월 14일</p>
 					</div>
+					<div class="label-input back-space">
+					<button class="btn back" onclick="history.back()" style="float:right; border: none; background-color:white;">
+						<svg id="i-arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#6c757d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+					    <path d="M10 6 L2 16 10 26 M2 16 L30 16" /></svg> 뒤로가기
+					 </button>
+					</div>
 				</div>				
 				<div class="img_box">
 					<div class="main_img">
-						<img id="big" src="">					 				
-					</div>
-					<div class="sub_img">
-						<img id="small" src="https://storage.cloud.google.com/farmfind/%EC%95%BC%EC%99%B8%EB%AC%B4%EB%8C%80.jpg">
-						<!-- <img id="small" src="https://storage.cloud.google.com/farmfind/%EC%95%BC%EC%99%B8%EB%AC%B4%EB%8C%80.jpg" onclick="imgToggle()">-->						 									
-					</div>
+						<img id="big" src="">
 						
+
 					</div>
-			</div>
-				<button class="btn btn-primary back" onclick="history.back()" style="float:right">뒤로가기 </button>
+					<!-- <div class="sub_img">
+						<img id="small" src="https://storage.cloud.google.com/farmfind/%EC%95%BC%EC%99%B8%EB%AC%B4%EB%8C%80.jpg">
+						<img id="small" src="https://storage.cloud.google.com/farmfind/%EC%95%BC%EC%99%B8%EB%AC%B4%EB%8C%80.jpg" onclick="imgToggle()">						 									
+					</div> -->	
+				</div>
+			</div>				
 		</div>
 	</div>
 </div>
@@ -235,10 +341,23 @@ textarea[readonly=readonly] {
 					let img1 = document.getElementById("big");
 					let item_img_aft = data.item_img_aft != null && data.item_img_aft != '' ? data.item_img_aft : '${path}/resources/images/noimage.jpg';
 					img1.src = item_img_aft;
+
+					let html = "";
+					if(data.item_img_nig != null && data.item_img_nig != '') {
+						console.log("밤사진있음");
+						html += "<div class='fa-circle has-tooltip'>";
+						html += "<i class='fa-solid fa-moon fa-fade fa-2xl' style='color: #f5f124;'></i>";
+						html += "</div>";
+						html += "<span class='tooltip' flow='down' >";
+						html += "<img src='"+data.item_img_nig+"'>";
+						html += "</span>"; 
+						
+						 $("#big").parent().append(html);
+					} 
 					
-					let img2 = document.getElementById("small");
+					/* let img2 = document.getElementById("small");
 					let item_img_nig = data.item_img_nig != null && data.item_img_nig != '' ? data.item_img_nig : '${path}/resources/images/noimage.jpg';
-					img2.src = item_img_nig;
+					img2.src = item_img_nig; */
 					
 				},
 				error : function(request, error){
