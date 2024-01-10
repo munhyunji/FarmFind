@@ -63,8 +63,8 @@
 		
 		.bg-light {
 		    background: 
-		        url("/FarmFind/resources/images/mainBanner_front.png") fixed 0px 0px no-repeat, 
-		        url("/FarmFind/resources/images/mainBanner_text.png") 0px -45px no-repeat, 
+		        url("${path}/resources/images/mainBanner_front.png") fixed 0px 0px no-repeat, 
+		        url("${path}/resources/images/mainBanner_text.png") 0px -45px no-repeat, 
 		        #ccede6 !important;
 		    background-size: 100% 100%;
 		    height: 350px;
@@ -102,3 +102,5 @@
                 </div>
             </div>
         </header>        
+   
+        

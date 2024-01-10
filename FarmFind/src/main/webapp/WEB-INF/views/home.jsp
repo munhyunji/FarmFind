@@ -120,7 +120,7 @@ li p {
 		<div class="col-md-6 main-img">
 			<div class="row text-center">
 			<div class="col-md-4">	
-				<img src='${path }/resources/images/character/bi.png' style="width:90%">			
+				<img src='${path }/resources/images/character/me.png' style="width:90%">			
 				<h4 class="my-3">본인</h4>
 				<p class="text-muted">개발자</p>
 			</div>			
