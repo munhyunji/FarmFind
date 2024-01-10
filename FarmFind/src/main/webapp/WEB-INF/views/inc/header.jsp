@@ -33,25 +33,25 @@
     </head>
     <script>
     //api 주소 선언
-    //let apiurl = "http://localhost:8090/";
-    let apiurl = "http://3.38.231.87:8090/";	
-   
-   	  
+    let apiurl = "http://localhost:8090/";
+    //let apiurl = "http://3.38.231.87:8090/";	
+    	  
     </script>
     <style>
     	.nav-logo {
 			  width: 40%; /* 이미지 크기 조절=헤더이미지 */
 		}
 						
-		.show-nav{
+		/* .show-nav{
 			display : block;
-			transition: top 0.2s ease-in-out;
+			background-color: rgba(255, 255, 255, .1);
+  			backdrop-filter: blur(2px);
 		}
 		
 		.hide-nav{
 			display : none;
 			transition: top 0.2s ease-in-out;
-		}
+		} */
 		
 		.fixed-top {
 		    position: fixed;
@@ -59,9 +59,17 @@
 		    right: 0;
 		    left: 0;
 		    z-index: 1030;
-		    background-color: rgba(255, 255, 255, .4);
-  			backdrop-filter: blur(4px);
 		}
+		
+		.bg-light {
+		    background: 
+		        url("/FarmFind/resources/images/mainBanner_front.png") fixed 0px 0px no-repeat, 
+		        url("/FarmFind/resources/images/mainBanner_text.png") 0px -45px no-repeat, 
+		        #ccede6 !important;
+		    background-size: 100% 100%;
+		    height: 350px;
+		}
+			
     </style>
  
     <body id="page-top">
@@ -75,8 +83,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="${path }">메인 화면</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${path }/item/list">낭만 농장</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${path }">메인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${path }/item/list">농장</a></li>
                         <%-- <li class="nav-item"><a class="nav-link" href="${path}#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="${path}/chat">Chat AI</a></li>
                         <li class="nav-item"><a class="nav-link" href="${path}/SalesAlaram">Contact</a></li> --%>
@@ -89,8 +97,8 @@
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome</h1>
-                    <p class="lead mb-0">낭농 하우스 </p>
+                    <!--  <h1 class="fw-bolder"></h1>
+                    <p class="lead mb-0"></p>  -->
                 </div>
             </div>
         </header>        

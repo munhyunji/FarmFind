@@ -119,7 +119,17 @@ textarea[readonly=readonly] {
 
 .back {
 	text-align : right;
-	margin-top: 10px;
+}
+
+.back-space {
+	display:flex;
+	flex-basis:100%;
+	align-items:center;
+	color:black;
+	font-size:16px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	flex-direction: row-reverse;
 }
 
 </style>
@@ -182,6 +192,12 @@ textarea[readonly=readonly] {
 					<div class="label-input">
 						<p id="regi">등록날짜: 2023년 12월 14일</p>
 					</div>
+					<div class="label-input back-space">
+					<button class="btn back" onclick="history.back()" style="float:right; border: none; background-color:white;">
+						<svg id="i-arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#6c757d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+					    <path d="M10 6 L2 16 10 26 M2 16 L30 16" /></svg> 뒤로가기
+					 </button>
+					</div>
 				</div>				
 				<div class="img_box">
 					<div class="main_img">
@@ -193,7 +209,6 @@ textarea[readonly=readonly] {
 						
 					</div>
 			</div>
-				<button class="btn btn-primary back" onclick="history.back()" style="float:right">뒤로가기 </button>
 		</div>
 	</div>
 </div>

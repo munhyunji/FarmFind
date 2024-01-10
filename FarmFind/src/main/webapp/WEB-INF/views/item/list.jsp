@@ -104,6 +104,7 @@
 	height: 200px;
 	overflow : hidden;
 }
+
 .itemcard img {
   transition: all 0.2s linear;
 }
@@ -114,6 +115,11 @@
 .selected {
 	color : red;
 	font-weight: bold;
+}
+
+.new {
+	width: 5%;
+	margin-left: 5px;
 }
 </style>
 
@@ -263,11 +269,17 @@
 						let paging = data.pagination;
 						let html = "";
 						let imgUrl = '${path}/resources/images/noimage.jpg';
-						console.log(iteminfo);
-						
+						let newUrl = '${path}/resources/images/icon_new.png';
+						let today  = new Date();
+
 						if(iteminfo.length > 0) {
 														
 							for (i = 0; i < iteminfo.length; i++) {
+								
+								let rgstDt = new Date(iteminfo[i].rgst_dt); //date 형식으로변환
+								let timeDiff = today - rgstDt; //시간차이구하기
+								let daysDiff = timeDiff / (1000 * 60 * 60 * 24); //일로변경
+								
 	
 								html += "<div class='card itemcard mb-5'>";
 								
@@ -287,7 +299,13 @@
 									html += "<div class='small text-muted'>정보 없음</div>";
 								}
 								
-								html += "<h2 class='card-title h6'>" + iteminfo[i].item_nm + "</h2>";
+								//일주일 이내의 최신 등록 아이템 
+								if(daysDiff <= 7) {
+									html += "<h2 class='card-title h6'>" + iteminfo[i].item_nm + "<img class='new' src='"+newUrl+"'</h2>";
+								} else {
+									html += "<h2 class='card-title h6'>" + iteminfo[i].item_nm + "</h2>";
+									
+								}
 								html += "</div></a></div>";
 	
 							}
