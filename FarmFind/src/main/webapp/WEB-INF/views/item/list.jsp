@@ -283,7 +283,7 @@
 	
 								html += "<div class='card itemcard mb-5'>";
 								
-								if(iteminfo[i].item_get_from_dt != null && iteminfo[i].item_get_from_dt != '') {
+								if(iteminfo[i].item_img_aft != null && iteminfo[i].item_img_aft != '') {
 									html += "<a href='${path}/item/detail?no="+iteminfo[i].item_no+"'><div class='img_span'><img class='card-img-top' src="+iteminfo[i].item_img_aft+" /></div>";
 								} else {
 									html += "<a href='${path}/item/detail?no="+iteminfo[i].item_no+"'><div class='img_span'><img class='card-img-top' src='"+imgUrl+"' /></div>";										

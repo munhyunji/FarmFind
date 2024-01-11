@@ -337,6 +337,8 @@ textarea[readonly=readonly] {
 					//아이템 설명
 					let item_dscption = data.item_dscption != null && data.item_dscption != '' ? data.item_dscption : '정보 없음';
 					$("#item_dscption").text(item_dscption);
+					
+					$("#regi").text("등록날짜 : "+data.rgst_dt);
 
 					let img1 = document.getElementById("big");
 					let item_img_aft = data.item_img_aft != null && data.item_img_aft != '' ? data.item_img_aft : '${path}/resources/images/noimage.jpg';
