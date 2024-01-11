@@ -4,7 +4,7 @@
     
 <!-- Portfolio Modals-->
 	<!-- Portfolio item 1 modal popup-->
-<c:forEach var="item" begin="1" end="6">
+<c:forEach var="index" begin="1" end="6">
 	<div class="portfolio-modal modal fade" id="portfolioModal${index }"
 		tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">

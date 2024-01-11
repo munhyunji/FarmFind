@@ -110,7 +110,7 @@ li p {
 		<div class="col-md-6 main">				
 			<ol>
 				<li class="visitorLi"><p class="visitorCounter">TODAY <span id="hitCt"></span></p></li>
-				<li><span class="lispan">01</span><p>2017년부터 2023년까지의 낭만 농장 아이템을 검색 하실 수 있습니다.</p></li>
+				<li><span class="lispan">01</span><p>옛 시절 부터 2023년까지의 낭만 농장 아이템을 검색 하실 수 있습니다.</p></li>
 				<li><span class="lispan">02</span><p>낭만 농장 설치물에 대한 정보만 검색 하실 수 있습니다.<br> (낭만 농장 미니어처 등 꾸밈용이 아닌아이템은 포함되어 있지 않습니다.)</p></li>
 				<li><span class="lispan">03</span><p>이미지, 잘못된 정보 제보 부탁드립니다.</p></li>
 				<li><span class="lispan">04</span><p>모바일 페이지는 지원하지 않습니다.</p></li>
@@ -386,9 +386,9 @@ li p {
 				dataType : 'json',
 				success : function(data) {
 					if (data == 0) {
-						console.log("이미 저장된 회원 count 올라가지않음");
+						//console.log("이미 저장된 회원 count 올라가지않음");
 					} else {
-						console.log("신규 회원 입니다 어서오셈 ");
+						//console.log("신규 회원 입니다 어서오셈 ");
 					}
 				},
 				fail : function(error) {

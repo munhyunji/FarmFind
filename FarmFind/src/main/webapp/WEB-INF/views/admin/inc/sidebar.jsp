@@ -34,7 +34,8 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            	<a class="nav-link collapsed" href="${path}/admin/itemList">아이템 목록 </a>
+                <%-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>아이템 정보</span>
@@ -45,7 +46,7 @@
                         <a class="collapse-item" href="${path}/admin/itemList">목록</a>
                         <!-- <a class="collapse-item" href="cards.html">Cards</a>-->
                     </div>
-                </div>
+                </div> --%>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->

@@ -178,9 +178,8 @@
   											<li><input type='radio' id="selectGetFrom" name='getFrom' value='K' /><label for="selectGetFrom">키트</label>
   												<input type='radio' id="selectGetFrom2" name='getFrom' value='E' /><label for="selectGetFrom2">이벤트</label>
   											</li>
-  											<li><input type='radio' id="selectItemSize"  name='itemSize' value='1' /><label for="selectItemSize">1x1</label>
-  												<br><input type='radio' id="selectItemSize2" name='itemSize' value='2' /><label for="selectItemSize2">2x2~10x10</label>
-  												<br><input type='radio' id="selectItemSize3" name='itemSize' value='3' /><label for="selectItemSize3">11x11~</label>
+  											<li><input type='radio' id="selectItemSize"  name='itemSize' value='1x1' /><label for="selectItemSize">1x1</label>
+  												<input type='radio' id="selectItemSize2" name='itemSize' value='' /><label for="selectItemSize2">그 외 </label>
   											</li>
 	                                	</ul>
 	                                </div>
@@ -229,10 +228,6 @@
   											<li><input type='radio' id="tab2_selectGetFrom" name='tab2_getFrom' value='K' /><label for="tab2_selectGetFrom">키트</label>
   												<input type='radio' id="tab2_selectGetFrom2" name='tab2_getFrom' value='E' /><label for="tab2_selectGetFrom2">이벤트</label>
   											</li>
-  											<!-- <li><input type='radio' id="selectItemSize"  name='itemSize' value='1' /><label for="selectItemSize">1x1</label>
-  												<br><input type='radio' id="selectItemSize2" name='itemSize' value='2' /><label for="selectItemSize2">2x2~10x10</label>
-  												<br><input type='radio' id="selectItemSize3" name='itemSize' value='3' /><label for="selectItemSize3">11x11~</label>
-  											</li> -->
 	                                	</ul>
 	                                </div>
 	                            </div>
