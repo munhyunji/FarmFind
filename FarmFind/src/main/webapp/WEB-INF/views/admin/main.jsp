@@ -29,6 +29,16 @@
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
+                    	<div th:if="${session.adminId != null}">
+						    <!-- 세션에 adminId 속성이 있는 경우에만 출력 -->
+						    <p>Welcome, <span th:text="${session.adminId}"></span>!</p>
+						  
+						</div>
+						
+						<div th:unless="${session.adminId != null}">
+						    <!-- 세션에 adminId 속성이 없는 경우에만 출력 -->
+						    <p>You are not logged in.</p>
+						</div>
 
                     <!-- Content Row -->
                     <!-- <div class="row"> -->

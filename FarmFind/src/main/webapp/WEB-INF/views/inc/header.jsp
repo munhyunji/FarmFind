@@ -33,8 +33,8 @@
     </head>
     <script>
     //api 주소 선언
-    let apiurl = "http://localhost:8090/";
-    //let apiurl = "http://3.38.231.87:8090/";	
+    //let apiurl = "http://localhost:8090/";
+    let apiurl = "http://3.38.231.87:8090/";	
     	  
     </script>
     <style>
@@ -85,7 +85,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="${path }">메인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${path }/">메인</a></li>
                         <li class="nav-item"><a class="nav-link" href="${path }/item/list">농장</a></li>
                         <%-- <li class="nav-item"><a class="nav-link" href="${path}#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="${path}/chat">Chat AI</a></li>
