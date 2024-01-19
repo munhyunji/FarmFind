@@ -109,6 +109,7 @@
 				<input type="hidden" id="hiddenDyeYn" value="">
 				<input type="hidden" id="hiddenGetFrom" value="">
 				<input type="hidden" id="hiddenItemSize" value="">
+				<input type="hidden" id="hiddenItemEtc" value="">
 				
 				<input type="hidden" id="tab2_hiddenCate" value="">
 				<input type="hidden" id="tab2_hiddenDyeYn" value="">
@@ -165,6 +166,9 @@
 	                                         <li>
  												획득처 
   											</li>
+  											<li>
+ 												상호작용
+  											</li>
 	                                         <li>
  												사이즈 
   											</li>
@@ -177,6 +181,9 @@
   											</li>
   											<li><input type='radio' id="selectGetFrom" name='getFrom' value='K' /><label for="selectGetFrom">키트</label>
   												<input type='radio' id="selectGetFrom2" name='getFrom' value='E' /><label for="selectGetFrom2">이벤트</label>
+  											</li>
+  											<li><input type='radio' id="selectItemEtc" name='itemEtc' value='Y' /><label for="selectItemEtc">있음</label>
+  												<input type='radio' id="selectItemEtc2" name='itemEtc' value='' /><label for="selectItemEtc2">없음</label>
   											</li>
   											<li><input type='radio' id="selectItemSize"  name='itemSize' value='1x1' /><label for="selectItemSize">1x1</label>
   												<input type='radio' id="selectItemSize2" name='itemSize' value='' /><label for="selectItemSize2">그 외 </label>
