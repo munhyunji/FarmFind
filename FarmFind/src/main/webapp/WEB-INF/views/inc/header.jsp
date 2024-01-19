@@ -62,7 +62,7 @@
 		}
 		
 		header.py-5 {
-		    height: 30vh; /* 화면 높이의 10%로 조절 */
+		    height: 15vw; /* 화면 높이의 10%로 조절 */
 		   }
 		
 		.bg-light {
@@ -70,6 +70,7 @@
 		        url("${path}/resources/images/mainBanner_front.png") fixed 0px 0px/100% auto no-repeat, 
 		        url("${path}/resources/images/mainBanner_text.png") 0px -45px/100% auto no-repeat, 
 		        #ccede6 !important;
+		      
 		  }
 		  			
     </style>

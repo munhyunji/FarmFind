@@ -226,6 +226,14 @@
 		setItemList(1);				
 	});
 	
+	//상호작용
+	$("input[name='itemEtc']").change(function(){
+		let itemEtc = $("input[name='itemEtc']:checked").val();
+		$("#hiddenItemEtc").val(itemEtc);
+		
+		setItemList(1);				
+	});
+	
 	//카테고리 값 설정
 	function setCateValue(category, link) { 
 		$("#hiddenCate").val(category);
@@ -247,7 +255,9 @@
 		let dyeYN = $("#hiddenDyeYn").val(); //염색여부
 		let getFrom = $("#hiddenGetFrom").val(); //획득처
 		let itemSize = $("#hiddenItemSize").val(); //사이즈
-		
+		let itemEtc = $("#hiddenItemEtc").val(); //상호작용
+
+		console.log(itemEtc);
 			$.ajax({
 					url : apiurl + 'item/list',
 					type : 'GET',
@@ -257,14 +267,15 @@
 						category : category,
 						dyeYN : dyeYN,
 						getFrom : getFrom,
-						itemSize : itemSize
+						itemSize : itemSize,
+						itemEtc : itemEtc
 					},
 					contentType : "application/json; charset=utf-8;",
 					dataType : 'json',
 					success : function(data) {
 						// 성공 시 실행할 코드
-						console.log('AJAX 요청 성공:');
-
+						console.log('AJAX 요청 성공:'+data.list);
+										
 						let iteminfo = data.list; //아이템정보값
 						let paging = data.pagination;
 						let html = "";
@@ -276,11 +287,15 @@
 														
 							for (i = 0; i < iteminfo.length; i++) {
 								
-								let rgstDt = new Date(iteminfo[i].rgst_dt); //date 형식으로변환
-								let timeDiff = today - rgstDt; //시간차이구하기
-								let daysDiff = timeDiff / (1000 * 60 * 60 * 24); //일로변경
-								
-	
+								// Assuming today is defined as a Date object
+								let today = new Date();
+
+								let rgstDtArray = iteminfo[i].rgst_dt.match(/(\d{4})년 (\d{1,2})월 (\d{1,2})일/);
+								let rgstDt = new Date(Number(rgstDtArray[1]), Number(rgstDtArray[2]) - 1, Number(rgstDtArray[3]));
+
+								let timeDiff = today - rgstDt;
+								let daysDiff = timeDiff / (1000 * 60 * 60 * 24);
+
 								html += "<div class='card itemcard mb-5'>";
 								
 								if(iteminfo[i].item_img_aft != null && iteminfo[i].item_img_aft != '') {
@@ -339,7 +354,7 @@
 							let startPage = paging.startPage; //시작페이지
 							let totalPageCount = paging.totalPageCount; //전체페이지 수
 							let totalRecordCount = paging.totalRecordCount; //아이템수
-	
+								
 							//전체페이지 수 
 							$("#total-pages").text(totalPageCount);
 	
