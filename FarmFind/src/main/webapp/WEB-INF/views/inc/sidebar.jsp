@@ -143,31 +143,31 @@
 	                            <div class="row">
 	                                <div class="col-sm-6">
 	                                    <ul class="list-unstyled mb-0">
-	                                        <li><a href='javascript:void(0);' onclick="setCateValue('', this)" >전체 </a></li>
-	                                        <li><a href='javascript:void(0);' onclick="setCateValue('B', this)" >건축물</a></li>
-	                                        <li><a href='javascript:void(0);' onclick="setCateValue('P', this)" >식물 (나무,꽃)</a></li>
-	                                        <li><a href='javascript:void(0);' onclick="setCateValue('T', this)">타일 (울타리)</a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('', this)">전체 </a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('B', this)">건축물(빌딩)</a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('P', this)">식물(나무, 꽃)</a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('T', this)">타일(울타리, 꽃)</a></li>
 	                                    </ul>
 	                                </div>
 	                                <div class="col-sm-6">
 	                                    <ul class="list-unstyled mb-0">
-	                                        <li><a href='javascript:void(0);' onclick="setCateValue('A', this)" >공중</a></li>
-	                                        <li><a href='javascript:void(0);' onclick="setCateValue('W', this)" >벽</a></li>
+	                                    	<li><div>ㅤ</div></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('A', this)" >공중 타입</a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('W', this)" >벽 타입</a></li>
 	                                        <li><a href='javascript:void(0);' onclick="setCateValue('E', this)" >기타분류</a></li>
-	                                        
 	                                    </ul>
 	                                </div>
 	                                <hr>
 	                                <div class="col-sm-6">
 	                                    <ul class="list-unstyled mb-0">
 	                                        <li>
- 												염색 가능 여부
+ 												염색 
   											</li>
 	                                         <li>
  												획득처 
   											</li>
   											<li>
- 												상호작용
+ 												상호작용,특수
   											</li>
 	                                         <li>
  												사이즈 
