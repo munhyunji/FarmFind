@@ -10,6 +10,7 @@
 <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Farm Find</title>
@@ -33,8 +34,8 @@
     </head>
     <script>
     //api 주소 선언
-    //let apiurl = "http://localhost:8090/";
-    let apiurl = "http://3.38.231.87:8090/";	
+    let apiurl = "http://localhost:8090/";
+    //let apiurl = "http://3.38.231.87:8090/";	
     	  
     </script>
     <style>
@@ -79,7 +80,7 @@
         <!-- Navigation-->
          <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#"><img class="nav-logo" src="${path }/resources/assets/img/navbar-logo.svg" alt="..." /></a>
+                <a class="navbar-brand" href="${path }/"><img class="nav-logo" src="${path }/resources/assets/img/navbar-logo.svg" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>

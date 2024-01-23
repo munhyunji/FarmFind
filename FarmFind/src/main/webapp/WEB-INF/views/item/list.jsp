@@ -113,8 +113,10 @@
 }
 
 .selected {
-	color : red;
-	font-weight: bold;
+	/*color : red;
+	font-weight: bold;*/
+	box-shadow : inset 0px -0.5em 0 0 rgba(204, 208, 240, 1);
+	width: fit-content;
 }
 
 .new {
@@ -273,8 +275,6 @@
 					contentType : "application/json; charset=utf-8;",
 					dataType : 'json',
 					success : function(data) {
-						// 성공 시 실행할 코드
-						console.log('AJAX 요청 성공:'+data.list);
 										
 						let iteminfo = data.list; //아이템정보값
 						let paging = data.pagination;
