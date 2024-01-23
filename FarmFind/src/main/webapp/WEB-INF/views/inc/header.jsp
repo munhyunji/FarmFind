@@ -31,13 +31,13 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <!-- <script type="text/Javascript" src="${path}/resources/js/scripts.js"></script>-->
+        
     </head>
     <script>
-    //api 주소 선언
-    let apiurl = "http://localhost:8090/";
-    //let apiurl = "http://3.38.231.87:8090/";	
-    	  
+ 	 //let apiurl = "http://localhost:8090/";
+   	 let apiurl = "http://3.38.231.87:8090/";	
     </script>
+ 				
     <style>
     	.nav-logo {
 			  width: 40%; /* 이미지 크기 조절=헤더이미지 */
