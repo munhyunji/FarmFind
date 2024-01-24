@@ -33,5 +33,5 @@
 </head>
 	<script>
  	 //let apiurl = "http://localhost:8090/";
-   	 let apiurl = "http://3.38.231.87:8090/";	
+   	 let apiurl = "https://farmfindapi.store:8090/";	
     </script>
