@@ -166,18 +166,13 @@
 							<li><a class="page-link"
 								   href="javascript:setItemList('${pageMap.prevPage}')" aria-label="이전">
 								<span class="is-blind p-prev">이전</span>
-							</a></li>
-							
+							</a></li>							
 										<li><a class="page-link is-active" href="javascript:;">1</a></li>
-									
-									
 										<li><a class="page-link" href="javascript:setItemList('1')">1</a>&nbsp;</li>
 										<li><a class="page-link" href="javascript:setItemList('1')">1</a>&nbsp;</li>
 										<li><a class="page-link" href="javascript:setItemList('1')">1</a>&nbsp;</li>
 										<li><a class="page-link" href="javascript:setItemList('1')">1</a>&nbsp;</li>
-										<li><a class="page-link" href="javascript:setItemList('1')">1</a>&nbsp;</li>
-										
-							
+										<li><a class="page-link" href="javascript:setItemList('1')">1</a>&nbsp;</li>																
 							<li><a class="page-link"
 								   href="javascript:setItemList(23)" aria-label="다음">
 								<span class="is-blind p-next">다음</span>
@@ -259,7 +254,6 @@
 		let itemSize = $("#hiddenItemSize").val(); //사이즈
 		let itemEtc = $("#hiddenItemEtc").val(); //상호작용
 
-		console.log(itemEtc);
 			$.ajax({
 					url : apiurl + 'item/list',
 					type : 'GET',

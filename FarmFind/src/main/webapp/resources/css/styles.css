@@ -685,8 +685,8 @@ progress {
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
-  margin-right: calc(-0.5 * var(--bs-gutter-x));
-  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  /*margin-right: calc(-0.5 * var(--bs-gutter-x));*/
+  /*margin-left: calc(-0.5 * var(--bs-gutter-x));*/
 }
 .row > * {
   flex-shrink: 0;
@@ -10836,9 +10836,13 @@ textarea.form-control-lg {
 /* navbar 세팅 */
 
 #mainNav {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  background-color: #212529;
+   padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border: none;
+    background-color: transparent;
+    transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+    background-color: rgba(255, 255, 255, .1);
+	backdrop-filter: blur(2px);
 }
 #mainNav .navbar-toggler {
   padding: 0.75rem;
@@ -10857,6 +10861,7 @@ textarea.form-control-lg {
 /*#mainNav .navbar-brand img {
   height: 1.5rem;
 }*/
+
 #mainNav .navbar-nav .nav-item .nav-link {
   font-family: 'NotoSansKR-Thin';
   letter-spacing: 0.0625em;

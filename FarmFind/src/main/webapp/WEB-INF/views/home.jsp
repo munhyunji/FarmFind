@@ -19,12 +19,17 @@ ol li {
 li p {
 	font: 12pt NotoSansKR-Thin, arial, NotoSansKR-Thin;
 	color: #555;
+	
+}
+
+li .lip {
 	padding-left: 60px;
 }
 
 .lispan {
 	position: absolute;
 	line-height: 25px;
+
 }
 
 .text-center {
@@ -43,7 +48,7 @@ li p {
 
 .main-section .main {
 	display: flex;
-	justify-content: end;
+	/*justify-content: end;*/
 }
 
 .main-section .main-img {
@@ -93,6 +98,35 @@ li p {
   
 }
 
+.centerline {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  justify-content: center; /* Center the text */
+  color: black;
+  font-size: 16px;
+  margin: 8px 0px;
+}
+
+.centerline::before,
+.centerline::after {
+  content: "";
+  flex-grow: 1;
+  background: #e9e9e9;
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+}
+
+.centerline::before {
+  margin: 0px 16px; /* Space on the right side */
+}
+
+.centerline::after {
+  margin: 0px 16px; /* Space on the left side */
+}
+
+
 </style>
 <!-- Masthead-->
 <!-- <header class="masthead">
@@ -109,44 +143,43 @@ li p {
 	<div class="container main-section">
 		<div class="col-md-6 main">				
 			<ol>
-				<li class="visitorLi"><p class="visitorCounter">TODAY <span id="hitCt"></span></p></li>
-				<li><span class="lispan">01</span><p>옛 시절 부터 2023년까지의 낭만 농장 아이템을 검색 하실 수 있습니다.</p></li>
-				<li><span class="lispan">02</span><p>낭만 농장 설치물에 대한 정보만 검색 하실 수 있습니다.<br> (낭만 농장 미니어처 등 꾸밈용이 아닌아이템은 포함되어 있지 않습니다.)</p></li>
-				<li><span class="lispan">03</span><p>이미지, 잘못된 정보 제보 부탁드립니다.</p></li>
-				<li><span class="lispan">04</span><p>모바일 페이지는 지원하지 않습니다.</p></li>
+				<!-- <li class="visitorLi"><p class="visitorCounter">TODAY <span id="hitCt"></span></p></li>-->
+				<li class="centerline"><p >NOTICE</p></li>
+				<li><span class="lispan">01</span><p class="lip">옛 시절 부터 현재까지의 낭만 농장 아이템을 검색 하실 수 있습니다.</p></li>
+				<li><span class="lispan">02</span><p class="lip">낭만 농장 설치물에 대한 정보를 검색 하실 수 있습니다.<br> (미니어처, 하우징, 리플레이 낭농 아이템은 포함되어 있지 않습니다.)</p></li>
+				<li><span class="lispan">03</span><p class="lip">이미지, 잘못된 정보 제보 부탁드립니다.</p></li>
+				<li><span class="lispan">04</span><p class="lip">모바일 페이지는 지원하지 않습니다.</p></li>
 				
 			</ol>
 		</div>
 		<div class="col-md-6 main-img">
 			<div class="row text-center">
-			<div class="col-md-4">	
-				<img src='${path }/resources/images/character/me.png' style="width:90%">			
-				<h4 class="my-3">본인</h4>
-				<p class="text-muted">개발자</p>
-			</div>			
-			<div class="col-md-4">	
-				<img src='${path }/resources/images/character/bi.png' style="width:90%">			
-				<h4 class="my-3">WF 연월비</h4>
-				<p class="text-muted">낭농 마스터</p>
+				<div class="col-md-12 centerline"><p>SPECIAL THANKS</p></div>
+				<div class="col-md-4">	
+					<img src='${path }/resources/images/character/a.png' style="width:90%">			
+					<h4 class="my-3">LT 던에어</h4>
+					<p class="text-muted">낭농</p>
+				</div>			
+				<div class="col-md-4">	
+					<img src='${path }/resources/images/character/bi.png' style="width:90%">			
+					<h4 class="my-3">WF 연월비</h4>
+					<p class="text-muted">낭농 마스터</p>
+				</div>
+				<div class="col-md-4">
+					<img src='${path }/resources/images/character/gae.png' style="width:90%">	
+					<h4 class="my-3">LT 연춘심</h4>
+					<p class="text-muted">낭농 낭농 낭농</p>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<img src='${path }/resources/images/character/gae.png' style="width:90%">	
-				<h4 class="my-3">LT 연춘심</h4>
-				<p class="text-muted">낭농 낭농 낭농</p>
-			</div>
-
-		</div>
-			<%-- <img class="main-img" src="${path }/resources/images/nature.JPG"> --%>
 		</div>
 	</div>
 </section>
 
  <section class="page-section" id="services">
 	<div class="container">
-		<div class="text-center">
-			
-				<h5 class="section-heading text-uppercase">낭만농장</h5>
-				<h6 class="section-subheading text-muted">Farm Find</h6>
+		<div class="text-center">			
+			<h5 class="section-heading text-uppercase">낭만농장</h5>
+			<h6 class="section-subheading text-muted">Farm Find</h6>
 		</div>
 		<div class="row text-center">
 
@@ -397,13 +430,13 @@ li p {
 	
 			});
 						
-			//오늘 방문자수 값 가져오기
 			$.ajax({
 				url : apiurl + "visitor/todayCount",
 				type : 'get',
 				dataType : 'json',
 				success : function(data){
-					$("#hitCt").text(data);
+					//$("#hitCt").text(data);
+					console.log(data);
 				},
 				fail : function(error) {
 					console.log('방문자 저장 실패:' + "code:" + request.status+ "\n" + "message:" + request.responseText);
