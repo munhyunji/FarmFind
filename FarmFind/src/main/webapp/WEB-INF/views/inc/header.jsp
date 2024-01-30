@@ -40,7 +40,7 @@
  				
     <style>
     	.nav-logo {
-			  width: 40%; /* 이미지 크기 조절=헤더이미지 */
+			  width: 17%; /* 이미지 크기 조절=헤더이미지 */
 		}
 						
 		/* .show-nav{
@@ -69,7 +69,7 @@
 		.bg-light {
 		    background: 
 		        url("${path}/resources/images/mainBanner_front.png") fixed 0px 0px/100% auto no-repeat, 
-		        url("${path}/resources/images/mainBanner_text.png") 0px -45px/100% auto no-repeat, 
+		        url("${path}/resources/images/mainBanner_text.png") 0px -5px/100% auto no-repeat, 
 		        #ccede6 !important;
 		      
 		  }
@@ -80,7 +80,7 @@
         <!-- Navigation-->
          <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="${path }/"><img class="nav-logo" src="${path }/resources/assets/img/navbar-logo.svg" alt="..." /></a>
+                <a class="navbar-brand" href="${path }/"><img class="nav-logo" src="${path }/resources/assets/img/navbar-logo.png" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>

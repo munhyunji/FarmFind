@@ -17,13 +17,13 @@
 						<div class="col-lg-8">
 							<div class="modal-body">
 								<!-- Project details-->
-								<h2 class="text-uppercase">Project Name</h2>
+								<h2 class="text-uppercase">FARM FIND</h2>
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto" src="${path }/resources/images/screenshot/pic-${index }.png" alt="..." />
 								<p>신수의 알</p>
 								<ul class="list-inline">
-									<li><strong>Client:</strong>개훈녀 </li>
+									<li><strong>Client:</strong>연춘심 </li>
 									<li><strong>Category:</strong> Illustration</li>
 								</ul>
 								<!-- <button class="btn btn-primary btn-xl text-uppercase"

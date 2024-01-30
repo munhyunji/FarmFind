@@ -76,7 +76,7 @@
 		    display: inline-block;
 		    cursor: pointer;
 		    height: 24px;
-		    width: 70px;
+		    width: 65px;
 		    border: 1px solid #ced4da;
 		    border-radius: 0.375rem;
 		    line-height: 24px;
@@ -90,20 +90,22 @@
 		    color: #333;
 		}
 		.list-unstyled input[type=radio]:checked+label{
-		    background-color: #C0C0C0;
+		    background-color: rgba(204, 208, 240, 1);
 		    color: #fff;
 		}
-		
-		button.c-btn.is-outline-blue-1 {
-		    border:1px solid #2f7ad3;
-		    border-radius: 0.375rem;
-		    background-color: transparent;
-		    color: #2f7ad3;
-		    width: 80px;
-		    height : 40px;
-		    font-family : "NotoSansKR-Thin";
+		.back {
+			text-align: center;
+		}		
+		.initBtn {
+			margin-top : 10px;
 		}
-			
+		
+		.hr-dotted {
+		  border : 0px;
+		  border-top: 5px dotted #663399;
+		  margin-top : 15px;
+		}
+		
     </style>
     			<input type="hidden" id="hiddenCate" value="">
 				<input type="hidden" id="hiddenDyeYn" value="">
@@ -138,13 +140,13 @@
 	                    </div>
 	                    <!-- Categories widget-->
 	                    <div class="card mb-4">
-	                        <div class="card-header">카테고리</div>
+	                        <div class="card-header">검색 카테고리</div>
 	                        <div class="card-body">
 	                            <div class="row">
 	                                <div class="col-sm-6">
 	                                    <ul class="list-unstyled mb-0">
-	                                        <li><a href='javascript:void(0);' onclick="setCateValue('', this)">전체 </a></li>
-	                                        <li><a href='javascript:void(0);' onclick="setCateValue('B', this)">건축물(빌딩)</a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('', this)" class="selected">전체 </a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('B', this)">건축물</a></li>
 	                                        <li><a href='javascript:void(0);' onclick="setCateValue('P', this)">식물(나무, 꽃)</a></li>
 	                                        <li><a href='javascript:void(0);' onclick="setCateValue('T', this)">타일(울타리, 꽃)</a></li>
 	                                    </ul>
@@ -154,10 +156,10 @@
 	                                    	<li><div>ㅤ</div></li>
 	                                        <li><a href='javascript:void(0);' onclick="setCateValue('A', this)" >공중 타입</a></li>
 	                                        <li><a href='javascript:void(0);' onclick="setCateValue('W', this)" >벽 타입</a></li>
-	                                        <li><a href='javascript:void(0);' onclick="setCateValue('E', this)" >기타분류</a></li>
+	                                        <li><a href='javascript:void(0);' onclick="setCateValue('E', this)" >기타 타입</a></li>
 	                                    </ul>
-	                                </div>
-	                                <hr>
+	                                </div>	                                
+	                                <hr class="hr-dotted">
 	                                <div class="col-sm-6">
 	                                    <ul class="list-unstyled mb-0">
 	                                        <li>
@@ -190,10 +192,15 @@
   											</li>
 	                                	</ul>
 	                                </div>
+	                                <div class="col-sm-6 back" style="width:100%"> 
+	                                	<button class="btn initBtn"  type="button" onclick="init()">
+	                                		<i class="fa-solid fa-arrow-rotate-left fa-flip-horizontal fa-lg"></i> 검색 조건 초기화
+	                                	</button> 
+	                                 </div> 
 	                            </div>
 	                        </div>
 	                    </div>
-	                    <button class="c-btn is-outline-blue-1" type="button" onclick="init()">초기화</button> 
+	                    
 					</div>
 
 					<div id="tab2" class="tab-content">
@@ -237,10 +244,14 @@
   											</li>
 	                                	</ul>
 	                                </div>
+	                                <div class="col-sm-6 back" style="width:100%"> 
+	                                	<button class="btn initBtn"  type="button" onclick="init()">
+	                                		<i class="fa-solid fa-arrow-rotate-left fa-flip-horizontal fa-lg"></i> 검색 조건 초기화
+	                                	</button> 
+	                                 </div> 
 	                            </div>
 	                        </div>
 	                    </div>
-	                    <button class="c-btn is-outline-blue-1" type="button" onclick="init()">초기화</button> 
 					</div>
                 
  
