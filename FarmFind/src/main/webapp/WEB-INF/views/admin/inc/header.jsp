@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:set var="path" value="${pageContext.request.contextPath }"/>
+<c:set var="isme" value="dlwlrma2341" />
     
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
@@ -22,16 +23,28 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
+        
+	<script type="text/Javascript" src="${path}/resources/js/jquery-1.8.2.js"></script>
+	<script type="text/Javascript" src="${path}/resources/js/jquery-ui.js"></script>
+	<script type="text/Javascript" src="${path}/resources/js/jquery-ui.touch.js"></script>
+	
     <!-- Custom styles for this template-->
     <link href="${path}/resources/css/sb-admin-2.css" rel="stylesheet">
-    <!-- Custom styles for this page -->
-    <link href="${path}/resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-   
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
+ 
     
 </head>
 	<script>
  	 //let apiurl = "http://localhost:8090/";
    	 let apiurl = "https://farmfindapi.store:8090/";	
+   	 
+   	 $(document).ready(function(){
+   		 let userId = sessionStorage.getItem("id");
+   		 let confirm = '${isme}';
+   		 
+   		 if(userId === '' || userId === null || userId != confirm) {
+   			 alert("로그인페이지로 이동합니다.");
+   			 location.href='${path}/admin/login';
+   			 sessionStorage.clear();
+   		 } 
+   	 })
     </script>

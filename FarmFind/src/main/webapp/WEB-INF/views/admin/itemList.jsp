@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ include file = "../inc/header.jsp" %>
+<%@ include file = "./inc/header.jsp" %>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -132,6 +133,9 @@
     <script src="${path }/resources/js/demo/datatables-demo.js"></script>
 
 	<script>
+	
+		let userId = sessionStorage.getItem("id");
+		let session = '${isme}';
     
 	   $(document).ready(function(){
 	      
@@ -265,30 +269,34 @@
 	//S3에 이미지 업로드 
 	function submitForm(Aftimgfile, Nigimgfile, itemNo, imgId) {
 		
-		var formData = new FormData();  // 새로운 FormData 객체 생성
-
-	    	formData.append('itemAft', Aftimgfile);  // 낮이미지
-	   		formData.append('itemNig', Nigimgfile); //밤
-	    	formData.append('item_no', itemNo);  // 파일 데이터 추가
-		 
-	   // console.log("Aftimgfile"+Aftimgfile, "Nigimgfile:"+ Nigimgfile, itemNo);
-	    	
-	     $.ajax({
-	        url: apiurl+'img/upload',  
-	        type: 'POST',
-	        data: formData,
-	        contentType: false,
-	        processData: false,
-	        success: function (data) {
-	            // 서버로부터의 응답 처리
-	            console.log(data);
-	            imgUrlSavetoDB(data.filename, itemNo, imgId);
-	        },
-	        error: function (error) {
-	            console.error('Error:', error);
-	        }
-	    }); 
+		if(userId == session) {
 		
+			var formData = new FormData();  // 새로운 FormData 객체 생성
+	
+		    	formData.append('itemAft', Aftimgfile);  // 낮이미지
+		   		formData.append('itemNig', Nigimgfile); //밤
+		    	formData.append('item_no', itemNo);  // 파일 데이터 추가
+			 
+		   // console.log("Aftimgfile"+Aftimgfile, "Nigimgfile:"+ Nigimgfile, itemNo);
+		    	
+		     $.ajax({
+		        url: apiurl+'img/upload',  
+		        type: 'POST',
+		        data: formData,
+		        contentType: false,
+		        processData: false,
+		        success: function (data) {
+		            // 서버로부터의 응답 처리
+		            console.log(data);
+		            imgUrlSavetoDB(data.filename, itemNo, imgId);
+		        },
+		        error: function (error) {
+		            console.error('Error:', error);
+		        }
+		    }); 
+		} else {
+			alert("관리자로그인 후 등록해 주세요");
+		}
 	}
 	
 	//이미지 Url DB에 update
